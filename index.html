@@ -62,12 +62,12 @@
 				};
 
 				$scope.apagarContatos = function(contatos){
-					var contatosSelecionados = contatos.filter(function(contato){
-						if(contato.selecionado)
+					$scope.contatos = contatos.filter(function(contato){
+						if(!contato.selecionado)
 							return contato;
 					});
 
-					console.log(contatosSelecionados);
+					// console.log(contatosSelecionados);
 				}
 
 		});
