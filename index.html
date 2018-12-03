@@ -45,10 +45,12 @@
 				};
 
 				$scope.operadoras = [
-					{nome: "Oi", codigo: 14},	
-					{nome: "Tim", codigo: 41},	
-					{nome: "Vivo", codigo: 15},	
-					{nome: "Claro", codigo: 25},	
+					{nome: "Oi", codigo: 14, categoria: "Celular"},	
+					{nome: "Tim", codigo: 41, categoria: "Celular"},	
+					{nome: "Vivo", codigo: 15, categoria: "Celular"},	
+					{nome: "Claro", codigo: 34, categoria: "Celular"},	
+					{nome: "GVT", codigo: 25, categoria: "Fixo"},	
+					{nome: "Embratel", codigo: 21, categoria: "Fixo"},	
 				];
 
 		});
@@ -80,7 +82,7 @@
 
 		<input class="form-control" type="text" ng-model= "contato.nome" placeholder="Nome" />
 		<input class="form-control" type="text" ng-model= "contato.telefone" placeholder="Telefone" />
-		<select class="form-control" ng-model="contato.operadora" ng-options="operadora.codigo as operadora.nome for operadora in operadoras">
+		<select class="form-control" ng-model="contato.operadora" ng-options="operadora.codigo as operadora.nome group by operadora.categoria for operadora in operadoras">
 			<option value =""> Selecione uma operadora </option>
 		</select>
 		
