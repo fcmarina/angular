@@ -19,6 +19,7 @@
 
 		.form-control{
 			margin-bottom: 20px;
+			margin-top: 20px;
 		}
 
 	</style>
@@ -43,6 +44,13 @@
 					delete $scope.contato;
 				};
 
+				$scope.operadoras = [
+					{nome: "Oi", codigo: 14},	
+					{nome: "Tim", codigo: 41},	
+					{nome: "Vivo", codigo: 15},	
+					{nome: "Claro", codigo: 25},	
+				];
+
 		});
 
 	</script>
@@ -57,12 +65,14 @@
 				<tr>
 					<th>Nome</th>
 					<th>Telefone</th>
+					<<th>Operadora</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="contato in contatos">
 					<td>{{contato.nome}}</td>
 					<td>{{contato.telefone}}</td>
+					<td>{{contato.operadora.nome}}</td>
 
 				</tr>
 			</tbody>
@@ -70,8 +80,11 @@
 
 		<input class="form-control" type="text" ng-model= "contato.nome" placeholder="Nome" />
 		<input class="form-control" type="text" ng-model= "contato.telefone" placeholder="Telefone" />
+		<select class="form-control" ng-model="contato.operadora" ng-options="operadora.codigo as operadora.nome for operadora in operadoras">
+			<option value =""> Selecione uma operadora </option>
+		</select>
+		
 		<button class='btn btn-primary btn-block' ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone"> Adicionar Contato</button>
-
 	</div>
 
 </body>
