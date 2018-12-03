@@ -23,7 +23,7 @@
 		}
 
 		.selecionado{
-			background-color: yellow;
+			background-color: pink;
 		}
 
 		.negrito{
@@ -61,9 +61,14 @@
 					delete $scope.contato;
 				};
 
-				$scope.classe1 = "selecionado";
-				$scope.classe2 = "negrito";
+				$scope.apagarContatos = function(contatos){
+					var contatosSelecionados = contatos.filter(function(contato){
+						if(contato.selecionado)
+							return contato;
+					});
 
+					console.log(contatosSelecionados);
+				}
 
 		});
 
@@ -73,17 +78,18 @@
 <body ng-controller="listaTelefonicaCtrl">
 	<div class="jumbotron">
 		<h3> {{app}}</h3>
-
-		<table class="table table-hover">
+		<table class="table">
 			<thead>
 				<tr>
+					<th></th>
 					<th>Nome</th>
 					<th>Telefone</th>
 					<th>Operadora</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-class="[classe1, classe2]" ng-repeat="contato in contatos">
+				<tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos">
+					<td><input type="checkbox" ng-model = "contato.selecionado"/></td>
 					<td>{{contato.nome}}</td>
 					<td>{{contato.telefone}}</td>
 					<td>{{contato.operadora.nome}}</td>
@@ -99,6 +105,7 @@
 		</select>
 		
 		<button class='btn btn-primary btn-block' ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone"> Adicionar Contato</button>
+		<button class='btn btn-danger btn-block' ng-click="apagarContatos(contatos)""> Apagar Contato</button>
 	</div>
 
 </body>
