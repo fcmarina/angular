@@ -41,9 +41,9 @@
 			function($scope){
 				$scope.app = "Lista Telefonica";
 				$scope.contatos = [
-					{nome: "Pedro", telefone: '8888-8888'},
-					{nome: "Ana F.", telefone: '9999-9999'},
-					{nome: "Maria", telefone: '7777-7777'},
+					{nome: "Pedro", telefone: '8888-8888', cor: "blue"},
+					{nome: "Ana F.", telefone: '9999-9999', cor: "yellow"},
+					{nome: "Maria", telefone: '7777-7777', cor: "red"},
 				];
 
 				$scope.operadoras = [
@@ -90,6 +90,7 @@
 					<th>Nome</th>
 					<th>Telefone</th>
 					<th>Operadora</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -98,6 +99,7 @@
 					<td>{{contato.nome}}</td>
 					<td>{{contato.telefone}}</td>
 					<td>{{contato.operadora.nome}}</td>
+					<td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"> </div></td>
 
 				</tr>
 			</tbody>
