@@ -112,7 +112,7 @@
 		</select>
 		
 		<button class='btn btn-primary btn-block' ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone"> Adicionar Contato</button>
-		<button class='btn btn-danger btn-block' ng-click="apagarContatos(contatos)"" ng-disabled="!isContatoSelecionado(contatos)"> Apagar Contato</button>
+		<button class='btn btn-danger btn-block' ng-click="apagarContatos(contatos)"" ng-show="isContatoSelecionado(contatos)"> Apagar Contato</button>
 	</div>
 
 </body>
